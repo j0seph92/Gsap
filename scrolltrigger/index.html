@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        /* width: 100%; */
+      }
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+      #cursor {
+        height: 40px;
+        width: 40px;
+        background-color: white;
+        border-radius: 50%;
+        position: fixed;
+        font-size: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 9;
+      }
+      #page1 {
+        background-color: green;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #page2 {
+        background-color: yellow;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      #page3 {
+        background-color: blue;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        /* padding: 10px; */
+      }
+
+      #page4 {
+        background-color: pink;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        flex-direction: column;
+      }
+      #box {
+        height: 33vh;
+        width: 25%;
+        background-color: aqua;
+      }
+      div#box\ box1 {
+        height: 33vh;
+        width: 25%;
+        background-color: blue;
+      }
+      div#box\ box2 {
+        height: 33vh;
+        width: 25%;
+        background-color: greenyellow;
+      }
+
+      #page2 h1 {
+        font-size: 36px;
+        background-color: red;
+        padding: 5px;
+      }
+      #page2 h2 {
+        font-size: 26px;
+        background-color: green;
+        padding: 5px;
+      }
+      #page3 h1 {
+        font-size: 40vw;
+        font-weight: 700;
+        color: #000;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      #image {
+        height: 30vh;
+        width: 30vw;
+        background-color: red;
+        position: relative;
+      }
+
+      #image img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      #overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        /* background-color: aqua; */
+        opacity: 0.5;
+        z-index: 10;
+      }
+      #pagealpha {
+        height: 100vh;
+        /* width: 100vw; */
+        background-color: orange;
+        position: relative;
+      }
+      #nav {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: black;
+      }
+      #nav .gsap {
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+      }
+      #nav .nav-menu {
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      #full .nav-x {
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 10px;
+      }
+      #full {
+        width: 0%;
+        height: 100%;
+        position: absolute;
+        background-color: pink;
+        top: 0;
+        right: -40%;
+        text-align: center;
+        overflow: hidden;
+      }
+      #full h4 {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 2rem;
+      }
+      #page5 {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: gray;
+      }
+      #page5 h1 {
+        font-size: 48px;
+        color: #fff;
+      }
+      #page5 h1 span {
+        display: inline-block;
+      }
+      #page6 {
+        height: 100vh;
+        width: 100vw;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* text-align: center; */
+        background-color: black;
+      }
+      #move {
+        position: relative;
+        background: #d9ff06;
+        color: #eee;
+        padding: 45px 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        overflow: hidden;
+        width: 100%;
+        gap: 2rem;
+        display: flex;
+      }
+      .marque {
+        flex-shrink: 0;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        transform: translateX(-100%);
+      }
+
+      .marque h1 {
+        font-size: 36px;
+        color: #000;
+        font-family: cursive;
+      }
+      .marque img {
+        height: 40px;
+      }
+      #page7 {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <div id="pagealpha">
+      <div id="nav">
+        <div class="gsap">GSAP</div>
+        <div class="nav-menu">=</div>
+      </div>
+      <div id="full">
+        <div class="nav-x">x</div>
+        <h4>Link 1</h4>
+        <h4>Link 2</h4>
+        <h4>Link 3</h4>
+        <h4>Link 4</h4>
+      </div>
+    </div>
+    <div id="page1">
+      <div id="image">
+        <div id="overlay"></div>
+        <img src="glasses-diary-with-woman-background.jpg" />
+      </div>
+      <div id="box"></div>
+    </div>
+    <div id="page2">
+      <div id="box"></div>
+      <h1>Thank</h1>
+      <h2>You</h2>
+    </div>
+    <div id="page3">
+      <h1>Experience</h1>
+    </div>
+
+    <div id="page4">
+      <div id="box" class="box"></div>
+      <div id="box box1" class="box1"></div>
+      <div id="box box2" class="box2"></div>
+    </div>
+    <div id="page5">
+      <h1>Test Developer</h1>
+    </div>
+    <div id="page6">
+      <div id="move">
+        <div class="marque">
+          <h1>THRIVE BEYOND LIMITS</h1>
+          <img src="arrow-br.svg" />
+        </div>
+        <div class="marque">
+          <h1>THRIVE BEYOND LIMITS</h1>
+          <img src="arrow-br.svg" />
+        </div>
+        <div class="marque">
+          <h1>THRIVE BEYOND LIMITS</h1>
+          <img src="arrow-br.svg" />
+        </div>
+        <div class="marque">
+          <h1>THRIVE BEYOND LIMITS</h1>
+          <img src="arrow-br.svg" />
+        </div>
+      </div>
+    </div>
+    <div id="page7"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
